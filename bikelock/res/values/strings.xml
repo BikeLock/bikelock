@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">BikeLock</string>
+    <string name="action_settings">Settings</string>
+
+    
+
+        <string name="user_settings_title">Settings</string>
+
+ 
+     
+    <string name="user_settings_reply_text">Auto reply message:</string>
+    <string name="user_settings_reply_text_summary">This is the message that will be automatically sent to anyone who tries to call you.</string>
+
+</resources>
