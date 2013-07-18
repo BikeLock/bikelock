@@ -3,16 +3,12 @@ package com.understandinggeek.bikelock;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.telephony.SmsManager;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.Toast;
- 
+
 public class AutoSMSActivity extends Activity {
  
 	Button buttonSend;
@@ -33,4 +29,8 @@ public class AutoSMSActivity extends Activity {
 	    Intent intent = new Intent(this, UserSettings.class);
 	    startActivity(intent);
 	}
+
+    public Button getButtonSend() {
+        return buttonSend;
+    }
 }
