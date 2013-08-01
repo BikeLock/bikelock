@@ -14,15 +14,15 @@ import android.widget.Chronometer;
  *
  */
 public class Trip extends BroadcastReceiver  {
-	 private long predicted_duration;
+    private Chronometer chronometer;
+    private long predictedDuration;
 	 private  List<TripEvent> events;
-	 private Chronometer duration;
 
-
-	 public Trip(Context application, long predicted_duration) {
-		 this.predicted_duration = predicted_duration; 
-		 duration = new Chronometer(application);
-	     duration.start();
+     //removed the dependency on the context here so that trip doesn't have to know about the app.
+	 public Trip(Chronometer tripTimer, long predictedDuration) {
+         this.chronometer = tripTimer;
+         this.predictedDuration = predictedDuration;
+	     tripTimer.start();
 	 }
 	 
 	 public Map getResponses() {
@@ -33,12 +33,9 @@ public class Trip extends BroadcastReceiver  {
 	    }
 	    return responses;
 	 }
-	 
-	 
 	  @Override
 	  public void onReceive(Context context, Intent intent) {
 		  // make a new TripEvent to handle the incoming call/sms
-	  
 	  }
 
 }
