@@ -3,7 +3,7 @@ package com.understandinggeek.bikelock.test;
 import android.app.Instrumentation;
 import android.test.ActivityInstrumentationTestCase2;
 import com.understandinggeek.bikelock.AutoSMSActivity;
-import com.understandinggeek.bikelock.CreateTripActivity;
+import com.understandinggeek.bikelock.ui.CreateTripActivity;
 
 public class CreateTripActivityTest extends ActivityInstrumentationTestCase2<CreateTripActivity> {
 
@@ -18,8 +18,8 @@ public class CreateTripActivityTest extends ActivityInstrumentationTestCase2<Cre
 
         sendKeys("30");
         sendKeys("ENTER");
-
-
+        
+	
     }
 }
 

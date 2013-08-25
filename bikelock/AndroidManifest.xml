@@ -11,27 +11,31 @@
     <uses-permission android:name="android.permission.SEND_SMS" />
 
     <application
-        
         android:allowBackup="true"
         android:debuggable="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.understandinggeek.bikelock.CreateTripActivity"
+            android:name="com.understandinggeek.bikelock.ui.CreateTripActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name="com.understandinggeek.bikelock.UserSettings"
+            android:name="com.understandinggeek.bikelock.ui.UserSettings"
             android:label="@string/user_settings_title"
-            android:parentActivityName="com.understandinggeek.bikelock.CreateTripActivity" >
+            android:parentActivityName="com.understandinggeek.bikelock.ui.CreateTripActivity" >
             <meta-data
                 android:name="android.support.PARENT_ACTIVITY"
-                android:value="com.understandinggeek.bikelock.CreateTripActivity" />
+                android:value="com.understandinggeek.bikelock.ui.CreateTripActivity" />
+        </activity>
+        <activity
+            android:name="com.understandinggeek.bikelock.ui.TripActivity"
+            android:label="@string/title_activity_trip" >
         </activity>
     </application>
 

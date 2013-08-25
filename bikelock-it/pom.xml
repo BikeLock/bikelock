@@ -21,6 +21,11 @@
 			<artifactId>android-test</artifactId>
 			<scope>provided</scope>
 		</dependency>
+		        <dependency>
+            <groupId>com.jayway.android.robotium</groupId>
+            <artifactId>robotium-solo</artifactId>
+            <version>4.0</version>
+        </dependency>
 		<dependency>
 			<groupId>com.understandinggeek</groupId>
 			<artifactId>bikelock</artifactId>
@@ -46,9 +51,9 @@
 				<configuration>
 					<test>
 						<!--<skip>true|false|auto</skip> -->
-						<!--<instrumentationPackage>packageName</instrumentationPackage> -->
-						`
-						<!--<instrumentationRunner>className</instrumentationRunner> -->
+						<instrumentationPackage>android.test</instrumentationPackage> 
+						
+						<instrumentationRunner>InstrumentationTestRunner</instrumentationRunner>
 						<!--<debug>true|false</debug> -->
 						<!--<coverage>true|false</coverage> -->
 						<!--<logonly>true|false</logonly> avd -->
@@ -61,6 +66,11 @@
 						<!--<package>your.package.name</package> -->
 						<!--</packages> -->
 					</test>
+						<sdk>
+						    
+							<platform>17</platform>
+						</sdk> 
+										
 				</configuration>
 				<extensions>true</extensions>
 			</plugin>

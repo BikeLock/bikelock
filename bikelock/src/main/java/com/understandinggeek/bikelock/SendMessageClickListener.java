@@ -4,9 +4,10 @@ import android.app.Activity;
 import android.content.SharedPreferences;
 import android.preference.PreferenceManager;
 import android.telephony.SmsManager;
-import android.view.View;
+
 import android.widget.EditText;
 import android.widget.Toast;
+import android.view.View;
 
 public class SendMessageClickListener implements View.OnClickListener {
 
@@ -18,7 +19,8 @@ public class SendMessageClickListener implements View.OnClickListener {
         this.phoneNumber = phoneNumber;
     }
 
-    @Override
+    
+    	@Override
     public void onClick(View view) {
         SharedPreferences sharedPrefs = PreferenceManager.getDefaultSharedPreferences((Activity) view.getContext());
         //to fix once I'm worked out where to put strings like this
@@ -32,4 +34,5 @@ public class SendMessageClickListener implements View.OnClickListener {
             e.printStackTrace();
         }
     }
+
 }

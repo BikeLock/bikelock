@@ -1,4 +1,6 @@
-package com.understandinggeek.bikelock;
+package com.understandinggeek.bikelock.ui;
+
+import com.understandinggeek.bikelock.R;
 
 import android.os.Bundle;
 import android.preference.PreferenceActivity;

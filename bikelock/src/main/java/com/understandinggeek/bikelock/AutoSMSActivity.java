@@ -1,6 +1,8 @@
 package com.understandinggeek.bikelock;
 
 
+import com.understandinggeek.bikelock.ui.UserSettings;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;

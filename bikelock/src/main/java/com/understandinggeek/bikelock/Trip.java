@@ -25,7 +25,11 @@ public class Trip extends BroadcastReceiver  {
 	     tripTimer.start();
 	 }
 	 
-	 public Map getResponses() {
+	 public Trip() {
+		// TODO Auto-generated constructor stub
+	}
+
+	public Map getResponses() {
 		 // a map of responses sent by the app
 		Map<Date,String> responses = new HashMap<Date,String>();
 	    for (TripEvent event : events) {
@@ -37,5 +41,7 @@ public class Trip extends BroadcastReceiver  {
 	  public void onReceive(Context context, Intent intent) {
 		  // make a new TripEvent to handle the incoming call/sms
 	  }
+	  
+	 
 
 }
