@@ -9,9 +9,9 @@
 		<version>Y</version>
 	</parent>
 
-	<groupId>com.understandinggeek</groupId>
+	
 	<artifactId>bikelock</artifactId>
-	<version>Y</version>
+
 	<packaging>apk</packaging>
 	<name>bikelock - Application</name>
 

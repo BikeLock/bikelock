@@ -10,26 +10,28 @@ import com.understandinggeek.bikelock.R;
 
 public class TripActivity extends Activity {
 	private String duration;
-	  TextView estimated_duration; 
+	  TextView estimatedDuration; 
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_trip);
 		
-		
+		estimatedDuration = (TextView) findViewById(R.id.estimatedDuration);
+				
 		Bundle extras = getIntent().getExtras();
 		// I guess there should be some proper exception handling, this is a bit quick and dirty
 		if (extras == null) {
 		    return;
 		    }
 		// Get data via the key
-		String ed = extras.getString("ESTIMATED_DURATION");
+		String ed = getIntent().getStringExtra("ESTIMATED_DURATION");
 		if (ed != null) {
-			estimated_duration = (TextView) findViewById(R.id.estimated_duration); 
-			estimated_duration.setText(ed);
-
+			 
 		} 
+		estimatedDuration = (TextView) findViewById(R.id.estimatedDuration); 
+		estimatedDuration.setText(ed);
+
 	}
 	
 	public String getDuration() {

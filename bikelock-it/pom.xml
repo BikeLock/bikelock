@@ -9,9 +9,9 @@
 		<version>Y</version>
 	</parent>
 
-	<groupId>com.understandinggeek</groupId>
+	
 	<artifactId>bikelock-it</artifactId>
-	<version>Y</version>
+
 	<packaging>apk</packaging>
 	<name>bikelock-it - Integration tests</name>
 
@@ -59,10 +59,10 @@
 						<!--<logonly>true|false</logonly> avd -->
 						<!--<testsize>small|medium|large</testsize> -->
 						<createReport>true</createReport>
-						<!--<classes> -->
-						<!--<class>your.package.name.YourTestClass</class> -->
-						<!--</classes> -->
-						<!--<packages> -->
+						<!--<classes>
+						<class>com.understandinggeek.bikelock.test.TripTest</class> 
+						</classes> 
+						<packages> -->
 						<!--<package>your.package.name</package> -->
 						<!--</packages> -->
 					</test>

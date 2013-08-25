@@ -10,33 +10,29 @@
     tools:context=".CreateTripActivity" >
 
     <TextView
-            android:id="@+id/tripDurationLabel"
-            android:layout_width="wrap_content"
-            
-            android:layout_height="wrap_content"
-            android:text="I'm be on my bike for "
-            android:textAppearance="?android:attr/textAppearanceLarge" />
+        android:id="@+id/tripDurationLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="I&apos;ll be on my bike for "
+        android:textAppearance="?android:attr/textAppearanceLarge" />
 
-    
-        <TextView
-            android:id="@+id/tripDurationText"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="0"
-            android:textAppearance="?android:attr/textAppearanceLarge" />
-    
     <SeekBar
         android:id="@+id/tripDurationSeek"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
+    <TextView
+        android:id="@+id/tripDurationText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <Button
         android:id="@+id/startButton"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-          android:onClick="startTrip"
+        android:onClick="startTrip"
         android:text="Start" />
-    
- 
 
 </LinearLayout>

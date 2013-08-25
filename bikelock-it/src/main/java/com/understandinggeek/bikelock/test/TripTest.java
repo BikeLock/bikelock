@@ -6,15 +6,15 @@ import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 import android.test.ActivityInstrumentationTestCase2;
 
-import android.view.View;
+//import android.view.View;
 import android.widget.ProgressBar;
-import android.widget.SeekBar;
+//import android.widget.SeekBar;
 import android.widget.TextView;
-import com.understandinggeek.bikelock.*;
+//import com.understandinggeek.bikelock.*;
 import com.understandinggeek.bikelock.ui.*;
 import com.understandinggeek.bikelock.R;
 import com.jayway.android.robotium.solo.Solo;
-
+import android.util.Log;
 
 @RunWith(JUnit4.class)
 public class TripTest extends
@@ -40,7 +40,7 @@ public class TripTest extends
 	}
 
 	@Test
-	public void startTimer() {
+	public void testStartTimer() {
 
 		solo.assertCurrentActivity("It's not create trip", "CreateTripActivity");
 
@@ -52,10 +52,16 @@ public class TripTest extends
 						.getProgress()), test_duration);
 		solo.clickOnButton("Start");
 		solo.assertCurrentActivity("It's not trip", "TripActivity");
-		assertEquals("duration passed through ok", test_duration,
-				((TextView) solo.getView(R.id.estimated_duration)));
+		
+		final TextView exampleTextView = 	  (TextView) solo.getCurrentActivity().findViewById(R.id.estimatedDuration);
 
-		;
+		Log.v("BikeLock", ": " + ((TextView)exampleTextView).getText().toString());
+		 
+		assertEquals("duration passed through ok", Integer.toString(test_duration),
+				
+				((TextView)exampleTextView).getText().toString());
+ 
+		
 
 	}
 
