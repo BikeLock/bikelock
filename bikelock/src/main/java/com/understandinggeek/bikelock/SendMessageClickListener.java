@@ -28,9 +28,9 @@ public class SendMessageClickListener implements View.OnClickListener {
 
         try {
             smsManager.sendTextMessage(phoneNumber, null, sms, null, null);
-            Toast.makeText(view.getContext(), "SMS Sent!", Toast.LENGTH_LONG).show();
+          //  Toast.makeText(view.getContext(), "SMS Sent!", Toast.LENGTH_LONG).show();
         } catch (Exception e) {
-            Toast.makeText(view.getContext(),"SMS faild, please try again later!", Toast.LENGTH_LONG).show();
+            //Toast.makeText(view.getContext(),"SMS faild, please try again later!", Toast.LENGTH_LONG).show();
             e.printStackTrace();
         }
     }

@@ -1,6 +1,7 @@
 package com.understandinggeek.bikelock.ui;
 
 import com.understandinggeek.bikelock.R;
+import com.understandinggeek.bikelock.Trip;
 import com.understandinggeek.bikelock.ui.TripActivity;
 
 import android.app.Activity;
@@ -17,11 +18,15 @@ import android.widget.TextView;
 
 public class CreateTripActivity extends Activity {
 	 SeekBar tripDuration;
+	 Trip trip;
 	public void startTrip(View v) {
       //  this.predictedDuration = predictedDuration;
         Intent i = new Intent(this, TripActivity.class);
         i.putExtra("ESTIMATED_DURATION", (Integer.toString(tripDuration.getProgress())));
         startActivity(i); 
+        trip = new Trip(v.getContext(), tripDuration.getProgress() * 10);
+        
+        trip.onRecieveTripEvent("This is the response\n");
         
         
    //          

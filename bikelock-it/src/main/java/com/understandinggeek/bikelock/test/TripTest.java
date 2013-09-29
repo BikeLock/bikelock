@@ -4,65 +4,58 @@ package com.understandinggeek.bikelock.test;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
-import android.test.ActivityInstrumentationTestCase2;
 
-//import android.view.View;
-import android.widget.ProgressBar;
-//import android.widget.SeekBar;
-import android.widget.TextView;
-//import com.understandinggeek.bikelock.*;
-import com.understandinggeek.bikelock.ui.*;
-import com.understandinggeek.bikelock.R;
-import com.jayway.android.robotium.solo.Solo;
+import com.understandinggeek.bikelock.TripEvent;
+import android.util.Log;
+
+import android.test.AndroidTestCase;
+import org.junit.Assert;
+
+import com.understandinggeek.bikelock.Trip;
+
 import android.util.Log;
 
 @RunWith(JUnit4.class)
-public class TripTest extends
-		ActivityInstrumentationTestCase2<CreateTripActivity> {
-	private Solo solo;
-
-	public TripTest() {
-		super(CreateTripActivity.class);
-	}
-
-	// @BeforeClass
-	@Override
-	public void setUp() throws Exception {
-		solo = new Solo(getInstrumentation(), getActivity());
+public class TripTest extends AndroidTestCase {
 	
-	}
+	
+    public void testTripIsActive() throws Throwable {
+    	Trip test_trip = new Trip(1000);	
+        Assert.assertTrue(test_trip.isActive());
+     }
 
-	// @AfterTest
-	@Override
-	public void tearDown() {
-		solo.finishOpenedActivities();
+    public void testTripTimesout() throws Throwable {
+    	Trip test_trip = new Trip(1000);	
+        Assert.assertTrue(test_trip.isActive());
+        Thread.sleep(2000);
+        Assert.assertFalse(test_trip.isActive());
+        Assert.assertEquals(0, test_trip.countEvents() );
+        test_trip.onRecieveTripEvent("An event");
+        Assert.assertEquals(0, test_trip.countEvents() );
+     }
+  
 
-	}
-
-	@Test
-	public void testStartTimer() {
-
-		solo.assertCurrentActivity("It's not create trip", "CreateTripActivity");
-
-		int test_duration = 52;
-		solo.setProgressBar((ProgressBar) solo.getView(R.id.tripDurationSeek),
-				test_duration);
-		assertEquals("seekbar set ok",
-				(((ProgressBar) solo.getView(R.id.tripDurationSeek))
-						.getProgress()), test_duration);
-		solo.clickOnButton("Start");
-		solo.assertCurrentActivity("It's not trip", "TripActivity");
+    public void testRecordsEvents() throws Throwable {
+    	Trip test_trip = new Trip(1000);	
+    	Assert.assertEquals(0, test_trip.countEvents() );
+    	test_trip.onRecieveTripEvent("An event");
+    	Assert.assertEquals(1, test_trip.countEvents() );
+    	test_trip.onRecieveTripEvent("An event");
+    	Assert.assertEquals(2, test_trip.countEvents() );
+    	
+    	boolean event_recorded = false;
+    	for(TripEvent item : test_trip.getEvents() ){
+    	    event_recorded  = (item.getResponse_text().equals("An event"));
+    	    if (event_recorded) break;
+    	}
+    	
+    	Log.v("BikeLock", "Events: " + (test_trip.getEvents()));
+		Assert.assertTrue(event_recorded);
+    	
 		
-		final TextView exampleTextView = 	  (TextView) solo.getCurrentActivity().findViewById(R.id.estimatedDuration);
-
-		Log.v("BikeLock", ": " + ((TextView)exampleTextView).getText().toString());
-		 
-		assertEquals("duration passed through ok", Integer.toString(test_duration),
-				
-				((TextView)exampleTextView).getText().toString());
- 
-		
-
-	}
+     }   
+    
+    
+    
 
 }

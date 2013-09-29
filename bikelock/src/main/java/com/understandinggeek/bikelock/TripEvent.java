@@ -11,6 +11,18 @@ public class TripEvent {
 		timestamp = System.currentTimeMillis();
 	}
 	
+	public TripEvent(String response) {
+		timestamp = System.currentTimeMillis();
+		response_text =response;
+	}
+	
+	public String toString() {
+		return ("\n Time:" + (new Date(timestamp)).toString() 
+				+"\n response: "+ response_text
+				+"\n details: TBC");
+		
+	}
+	
 	public String getResponse_text() {
 		return response_text;
 	}
