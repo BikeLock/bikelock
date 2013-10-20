@@ -34,5 +34,8 @@
         android:layout_height="wrap_content"
         android:onClick="startTrip"
         android:text="Start" />
+    
+    
+    
 
 </LinearLayout>

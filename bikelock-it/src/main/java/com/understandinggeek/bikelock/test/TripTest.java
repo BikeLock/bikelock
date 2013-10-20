@@ -30,7 +30,7 @@ public class TripTest extends AndroidTestCase {
         Thread.sleep(2000);
         Assert.assertFalse(test_trip.isActive());
         Assert.assertEquals(0, test_trip.countEvents() );
-        test_trip.onRecieveTripEvent("An event");
+      //  test_trip.onRecieveTripEvent("An event");
         Assert.assertEquals(0, test_trip.countEvents() );
      }
   
@@ -38,9 +38,9 @@ public class TripTest extends AndroidTestCase {
     public void testRecordsEvents() throws Throwable {
     	Trip test_trip = new Trip(1000);	
     	Assert.assertEquals(0, test_trip.countEvents() );
-    	test_trip.onRecieveTripEvent("An event");
+    	//test_trip.onRecieveTripEvent("An event");
     	Assert.assertEquals(1, test_trip.countEvents() );
-    	test_trip.onRecieveTripEvent("An event");
+    	//test_trip.onRecieveTripEvent("An event");
     	Assert.assertEquals(2, test_trip.countEvents() );
     	
     	boolean event_recorded = false;
