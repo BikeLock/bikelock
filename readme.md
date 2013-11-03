@@ -4,11 +4,15 @@
 
 Assuming that the android SDK has been downloaded and unzipped in $HOME/bin
 
-Set the ANDROID_HOME pointing to the Android SDK folder
+Set the ANDROID_HOME pointing to the Android SDK folder. OSX:
 
     export ANDROID_HOME=/Users/a.fiore/bin/android-sdk-macosx/
 
 Note: Maven seems to fail at expanding ~/ into $HOME.
+
+...or Windows:
+
+    set ANDROID_HOME=C:\<installation location>\android-sdk-windows
 
 ## Code generation
 
