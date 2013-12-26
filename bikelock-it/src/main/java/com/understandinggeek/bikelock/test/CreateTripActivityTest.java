@@ -30,8 +30,7 @@ import android.app.PendingIntent;
 import android.telephony.gsm.SmsMessage;
 
 @RunWith(JUnit4.class)
-public class CreateTripActivityTest extends
-		ActivityInstrumentationTestCase2<CreateTripActivity> {
+public class CreateTripActivityTest extends ActivityInstrumentationTestCase2<CreateTripActivity> {
 	private Solo solo;
 
 	public CreateTripActivityTest() {
@@ -42,7 +41,6 @@ public class CreateTripActivityTest extends
 	@Override
 	public void setUp() throws Exception {
 		solo = new Solo(getInstrumentation(), getActivity());
-	
 	}
 
 	// @AfterTest
@@ -52,9 +50,6 @@ public class CreateTripActivityTest extends
 
 	}
 
-	
-	
-	 
 	@Test
 	public void testonCreate() {
 		Log.v("BikeLock", "testonCreate");

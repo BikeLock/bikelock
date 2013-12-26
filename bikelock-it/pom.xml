@@ -21,10 +21,10 @@
 			<artifactId>android-test</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		        <dependency>
+        <dependency>
             <groupId>com.jayway.android.robotium</groupId>
             <artifactId>robotium-solo</artifactId>
-            <version>4.0</version>
+            <version>4.3.1</version>
         </dependency>
 		<dependency>
 			<groupId>com.understandinggeek</groupId>

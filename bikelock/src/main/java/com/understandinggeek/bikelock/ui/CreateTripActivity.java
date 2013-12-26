@@ -17,7 +17,6 @@ import android.widget.SeekBar;
 
 import android.widget.TextView; 
 
-
 public class CreateTripActivity extends Activity {
 	 SeekBar tripDuration;
 	 Trip trip;
@@ -40,17 +39,13 @@ public class CreateTripActivity extends Activity {
 
 	public void startRecievers() {
         try {
-
             // Start service
             Intent svc = new Intent(this, AutoResponse.class);
             this.startService(svc);
-            
-       
         }
         catch (Exception e) {
             Log.e("onCreate", "service creation problem", e);
         }
-        
 	}
 	
     @Override
@@ -61,9 +56,6 @@ public class CreateTripActivity extends Activity {
         
        final TextView tripDurationValue = (TextView) findViewById(R.id.tripDurationText); 
        startRecievers();
-       
-
-     
        
        tripDuration.setOnSeekBarChangeListener(
     		   new SeekBar.OnSeekBarChangeListener() { 
@@ -87,8 +79,5 @@ public class CreateTripActivity extends Activity {
     	        }
     		   
     		   );  
-
-
-    
     }
 }
