@@ -18,7 +18,6 @@ public class TripActivity extends Activity {
 		setContentView(R.layout.activity_trip);
 		
 		estimatedDuration = (TextView) findViewById(R.id.estimatedDuration);
-				
 		Bundle extras = getIntent().getExtras();
 		// I guess there should be some proper exception handling, this is a bit quick and dirty
 		if (extras == null) {

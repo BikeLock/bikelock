@@ -11,7 +11,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.JUnit4;
 
-import android.content.Context;
 import android.content.Intent;
 import android.test.ActivityInstrumentationTestCase2;
 
@@ -25,69 +24,55 @@ import com.understandinggeek.bikelock.R;
 import com.jayway.android.robotium.solo.Solo;
 import android.util.Log;
 import android.telephony.PhoneNumberUtils;
-import android.telephony.SmsManager;
-import android.app.PendingIntent;
-import android.telephony.gsm.SmsMessage;
+
+import static com.understandinggeek.bikelock.R.id.tripDurationSeek;
+import static java.lang.Integer.toString;
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 @RunWith(JUnit4.class)
 public class CreateTripActivityTest extends ActivityInstrumentationTestCase2<CreateTripActivity> {
-	private Solo solo;
+    public static final String START = "Start";
+    private Solo solo;
+    public static final Integer JOURRNEY_DURATION = 52;
 
-	public CreateTripActivityTest() {
+    public CreateTripActivityTest() {
 		super(CreateTripActivity.class);
 	}
 
-	// @BeforeClass
 	@Override
 	public void setUp() throws Exception {
 		solo = new Solo(getInstrumentation(), getActivity());
 	}
 
-	// @AfterTest
 	@Override
 	public void tearDown() {
 		solo.finishOpenedActivities();
-
 	}
 
 	@Test
+	public void shouldSetJourneyDuration() {
+        assertCurrentActivityIs("CreateTripActivity");
+
+        solo.setProgressBar(getProgressBar(tripDurationSeek), JOURRNEY_DURATION);
+        assertThat((getProgressBar(tripDurationSeek)).getProgress(), is(JOURRNEY_DURATION));
+		solo.clickOnButton(START);
+        //something flaky here. If I don't have this assertion the textView is null. Timing issue/Race condition?
+        assertCurrentActivityIs("TripActivity");
+
+        assertThat(getTextView(R.id.estimatedDuration).getText().toString(), is((JOURRNEY_DURATION.toString())));
+	}
+
+    @Test
 	public void testonCreate() {
-		Log.v("BikeLock", "testonCreate");
-		
-		solo.assertCurrentActivity("It's not create trip", "CreateTripActivity");
-
-		int test_duration = 52;
-		solo.setProgressBar((ProgressBar) solo.getView(R.id.tripDurationSeek),test_duration);
-		assertEquals("seekbar set",
-				(((ProgressBar) solo.getView(R.id.tripDurationSeek))
-						.getProgress()), test_duration);
-		solo.clickOnButton("Start");		
-		
-		//startRecievers();
-		//Log.v("BikeLock", "recieve msg");
-
-		
-		solo.assertCurrentActivity("It's trip", "TripActivity");
-		
-		final TextView duration_TextView = 	  (TextView) solo.getCurrentActivity().findViewById(R.id.estimatedDuration);
-
-		
-		
-		solo.assertCurrentActivity("It's trip", "TripActivity");
-		
-		assertEquals("duration passed through ok", Integer.toString(test_duration),
-				((TextView)duration_TextView).getText().toString());
-		
-		Log.v("BikeLock", "Duration : " + ((TextView)duration_TextView).getText().toString());
-		
 		emulateIncomingSms("15555215556","hi");
 	}
-	
+
 	/*
 	@Test
 	public void testcallsblocked() {
 		Log.v("BikeLock", "testcallsblocked");
-		solo.assertCurrentActivity("It's not create trip", "CreateTripActivity");
+		solo.assertCurrentActivityIs("It's not create trip", "CreateTripActivity");
 		
 	}
 	
@@ -96,7 +81,7 @@ public class CreateTripActivityTest extends ActivityInstrumentationTestCase2<Cre
 	public void testsmshandled() {
 		Log.v("BikeLock", "testsmshandled");
 		
-		solo.assertCurrentActivity("It's not create trip", "CreateTripActivity");
+		solo.assertCurrentActivityIs("It's not create trip", "CreateTripActivity");
 
 	}
 	*/
@@ -228,9 +213,17 @@ public class CreateTripActivityTest extends ActivityInstrumentationTestCase2<Cre
     private static byte reverseByte(byte b) {
         return (byte) ((b & 0xF0) >> 4 | (b & 0x0F) << 4);
     }
-	
-	
-	
-	
 
+
+    public ProgressBar getProgressBar(int id) {
+        return (ProgressBar) solo.getView(id);
+    }
+
+    public void assertCurrentActivityIs(String activityName) {
+        solo.assertCurrentActivity("Current activity is not "+activityName, activityName);
+    }
+
+    private TextView getTextView(int textViewId) {
+        return (TextView) solo.getCurrentActivity().findViewById(textViewId);
+    }
 }
